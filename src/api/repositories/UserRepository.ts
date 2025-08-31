@@ -4,8 +4,9 @@ import { ObjectId } from 'mongodb';
 import { User } from '../models/User';
 import { UserRequestDTO } from '../request/UserRequestDTO';
 import { UserResponseDTO } from '../response/UserResponseDTO';
+import { appDataSource } from '../../db/data-source';
 
-export class UserRepository extends Repository<User> {
+class UserRepository extends Repository<User> {
     constructor(dataSource: DataSource) {
         super(User, dataSource.manager);
     }
@@ -31,3 +32,5 @@ export class UserRepository extends Repository<User> {
         return await this.delete({ _id: new ObjectId(userId) });
     }
 }
+
+export default new UserRepository(appDataSource);

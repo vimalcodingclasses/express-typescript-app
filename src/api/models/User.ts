@@ -5,32 +5,32 @@ import * as bcrypt from 'bcrypt';
 @Entity()
 export class User {
     @ObjectIdColumn()
-    _id: ObjectId | undefined
+    public _id: ObjectId | undefined
 
     @Column()
-    firstName: string | undefined
+    public firstName: string | undefined
 
     @Column()
-    lastName: string | undefined
+    public lastName: string | undefined
 
     @Column()
-    email: string | undefined
+    public email: string | undefined
 
     @Column()
-    password: string | undefined
+    public password: string | undefined
 
     @Column()
-    age: number | undefined
+    public age: number | undefined
 
     @CreateDateColumn()
-    createdAt: Date | undefined
+    public createdAt: Date | undefined
 
     @UpdateDateColumn()
-    updatedAt: Date | undefined
+    public updatedAt: Date | undefined
 
     @BeforeInsert()
     @BeforeUpdate()
-    async hashPassword() {
+    public async hashPassword() {
         if (this.password) {
             const saltRounds = 10;
             this.password = await bcrypt.hash(this.password, saltRounds);

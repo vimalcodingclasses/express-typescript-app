@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm';
 
 import { User } from '../api/models/User';
 
-export const dataSource = new DataSource({
+export const appDataSource = new DataSource({
     type: 'mongodb',
     host: `${process.env.DB_HOST}`,
     port: parseInt(`${process.env.DB_PORT}`),
